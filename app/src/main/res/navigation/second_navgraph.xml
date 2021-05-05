@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/second_navgraph"
+    app:startDestination="@id/rvDevicesFragment">
+
+    <fragment
+        android:id="@+id/rvDevicesFragment"
+        android:name="com.nicomahnic.dadm.clase5.fragments.secondActivityFragments.RVDevicesFragment"
+        android:label="fragment_device_rv"
+        tools:layout="@layout/fragment_rv_devices">
+        <action
+            android:id="@+id/action_rvDevicesFragment_to_containterDetailsFragment"
+            app:destination="@id/containterDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/deviceDetailsFragment"
+        android:name="com.nicomahnic.dadm.clase5.fragments.secondActivityFragments.DeviceDetailsFragment"
+        android:label="fragment_device_details"
+        tools:layout="@layout/fragment_device_details" >
+        <argument android:name="deviceName"
+            app:argType="string" />
+        <argument android:name="description"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/deviceOptionsFragment"
+        android:name="com.nicomahnic.dadm.clase5.fragments.secondActivityFragments.DeviceOptionsFragment"
+        android:label="fragment_device_options"
+        tools:layout="@layout/fragment_device_options" />
+    <fragment
+        android:id="@+id/containterDetailsFragment"
+        android:name="com.nicomahnic.dadm.clase5.fragments.secondActivityFragments.ContainterDetailsFragment"
+        android:label="fragment_containter_details"
+        tools:layout="@layout/fragment_containter_details" >
+        <argument
+            android:name="deviceName"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerDevicesFragment"
+        android:name="com.nicomahnic.dadm.clase5.fragments.secondActivityFragments.registerDevicesFragment"
+        android:label="fragment_add_devices"
+        tools:layout="@layout/fragment_register_devices" />
+</navigation>
