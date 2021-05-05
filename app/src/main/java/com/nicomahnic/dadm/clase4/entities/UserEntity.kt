@@ -2,11 +2,13 @@ package com.nicomahnic.dadm.clase4.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 
 
 @Entity(tableName = "users")
 data class UserEntity(
+
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0,
 

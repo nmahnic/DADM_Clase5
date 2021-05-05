@@ -6,6 +6,9 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.nicomahnic.dadm.clase4.database.appDatabase
+import com.nicomahnic.dadm.clase4.domain.DeviceDao
+import com.nicomahnic.dadm.clase4.entities.DeviceEntity
 import com.nicomahnic.dadm.clase5.R
 import com.nicomahnic.dadm.clase5.activities.SecondActivity
 import com.nicomahnic.dadm.clase5.adapter.DevicesAdapter
@@ -22,14 +25,17 @@ class RVDevicesFragment : Fragment(R.layout.fragment_rv_devices) {
     private lateinit var binding: FragmentRvDevicesBinding
     private lateinit var v: View
 
+    private var db: appDatabase? = null
+    private var deviceDao: DeviceDao? = null
+
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var devicesAdapter: DevicesAdapter
 
-    var devices: List<Device> = listOf(
-        Device("Dormitorio","Hay una cama"),
-        Device("Cocina","Cocina2"),
-        Device("Lavadero","Lavarropas")
-    )
+//    var devices: List<Device> = listOf(
+//        Device("Dormitorio","Hay una cama"),
+//        Device("Cocina","Cocina2"),
+//        Device("Lavadero","Lavarropas")
+//    )
     
 
 
@@ -44,6 +50,10 @@ class RVDevicesFragment : Fragment(R.layout.fragment_rv_devices) {
 
     override fun onStart() {
         super.onStart()
+        db = appDatabase.getAppDataBase(v.context)
+        deviceDao = db?.deviceDao()
+
+        val devices = deviceDao?.loadAllDevices() as List<DeviceEntity>
 
         binding.rvDevices.setHasFixedSize(true)
         linearLayoutManager = LinearLayoutManager(context)

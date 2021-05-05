@@ -81,21 +81,21 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         db = appDatabase.getAppDataBase(v.context)
         userDao = db?.userDao()
 
-        userDao?.insertPerson(UserEntity(name = "Mash", password = "1234"))
-        userDao?.insertPerson(UserEntity(name = "Juanma", password = "1234"))
-        userDao?.insertPerson(UserEntity(name = "Juani", password = "1234"))
-        userDao?.insertPerson(UserEntity(name = "Eric", password = "1234"))
-        userDao?.insertPerson(UserEntity(name = "Tiago", password = "1234"))
+        val userList: MutableList<User> = ArrayList<User>()
 
-        val usersList = userDao?.loadAllPersons() as MutableList<User>
+        if(userDao?.loadAllPersons()?.size == 0) {
+            userDao?.insertPerson(UserEntity(id = 0, name = "Mash", password = "1234"))
+            userDao?.insertPerson(UserEntity(id = 0, name = "Juanma", password = "1234"))
+            userDao?.insertPerson(UserEntity(id = 0, name = "Juani", password = "1234"))
+            userDao?.insertPerson(UserEntity(id = 0, name = "Eric", password = "1234"))
+            userDao?.insertPerson(UserEntity(id = 0, name = "Tiago", password = "1234"))
+        }
+        val usersList = userDao?.loadAllPersons()
         Log.d("NM","userList = ${usersList}")
 
-        val userList: MutableList<User> = ArrayList<User>()
-        userList.add(User("Mash", "1234"))
-        userList.add(User("Juanma", "1234"))
-        userList.add(User("Juani", "1234"))
-        userList.add(User("Eric", "1234"))
-        userList.add(User("Tiago", "1234"))
+        usersList!!.forEach { userDao ->
+            userList.add(User(userDao!!.name,userDao.password))
+        }
 
 
         binding.btnEnter.setOnClickListener {

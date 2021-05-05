@@ -6,11 +6,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.nicomahnic.dadm.clase4.entities.DeviceEntity
 import com.nicomahnic.dadm.clase5.R
 import com.nicomahnic.dadm.clase5.entities.Device
 
 class DevicesAdapter(
-    private var devicesList: List<Device>,
+    private var devicesList: List<DeviceEntity>,
     val onItemClick: (Int) -> Unit
 ) : RecyclerView.Adapter<DevicesAdapter.DeviceHolder>() {
 
