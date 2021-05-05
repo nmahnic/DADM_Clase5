@@ -8,9 +8,8 @@
 
         <item
             android:id="@+id/registerDevicesFragment"
-            android:icon="@mipmap/ic_launcher_round"
+            android:icon="@drawable/ic_baseline_add_circle_24"
             android:title="Register Devices" />
-
     </group>
 
 </menu>

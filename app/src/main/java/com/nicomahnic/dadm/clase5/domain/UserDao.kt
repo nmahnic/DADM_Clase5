@@ -1,7 +1,7 @@
-package com.nicomahnic.dadm.clase4.domain
+package com.nicomahnic.dadm.clase5.domain
 
 import androidx.room.*
-import com.nicomahnic.dadm.clase4.entities.UserEntity
+import com.nicomahnic.dadm.clase5.entities.UserEntity
 
 @Dao
 interface UserDao {

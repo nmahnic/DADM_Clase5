@@ -8,10 +8,9 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
-import com.nicomahnic.dadm.clase4.database.appDatabase
-import com.nicomahnic.dadm.clase4.domain.UserDao
-import com.nicomahnic.dadm.clase4.entities.UserEntity
-import com.nicomahnic.dadm.clase5.entities.User
+import com.nicomahnic.dadm.clase5.database.appDatabase
+import com.nicomahnic.dadm.clase5.domain.UserDao
+import com.nicomahnic.dadm.clase5.entities.UserEntity
 import com.nicomahnic.dadm.clase5.R
 import com.nicomahnic.dadm.clase5.activities.SecondActivity
 import com.nicomahnic.dadm.clase5.databinding.FragmentLoginBinding
@@ -81,8 +80,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         db = appDatabase.getAppDataBase(v.context)
         userDao = db?.userDao()
 
-        val userList: MutableList<User> = ArrayList<User>()
-
         if(userDao?.loadAllPersons()?.size == 0) {
             userDao?.insertPerson(UserEntity(id = 0, name = "Mash", password = "1234"))
             userDao?.insertPerson(UserEntity(id = 0, name = "Juanma", password = "1234"))
@@ -93,13 +90,13 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         val usersList = userDao?.loadAllPersons()
         Log.d("NM","userList = ${usersList}")
 
-        usersList!!.forEach { userDao ->
-            userList.add(User(userDao!!.name,userDao.password))
-        }
+//        usersList!!.forEach { userDao ->
+//            userList.add(User(userDao!!.name,userDao.password))
+//        }
 
 
         binding.btnEnter.setOnClickListener {
-            val validUser = userList.find{it.name == binding.edtUser.text.toString()}
+            val validUser = usersList!!.find{it!!.name == binding.edtUser.text.toString()}
 
             validateUser(validUser)?.let{
                 val sendIntent = Intent(context, SecondActivity::class.java)
@@ -110,9 +107,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         }
     }
 
-    private fun validateUser(validUser: User?) : Boolean? {
+    private fun validateUser(validUser: UserEntity?) : Boolean? {
         validUser?.let{ user ->
-            if(user.passwd == binding.edtPasswd.text.toString()) user.checked = true
+            if(user.password == binding.edtPasswd.text.toString()) user.checked = true
             if(user.checked) {
                 return true
             }else{

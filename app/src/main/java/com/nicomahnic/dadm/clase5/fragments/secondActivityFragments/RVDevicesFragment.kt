@@ -6,14 +6,13 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.nicomahnic.dadm.clase4.database.appDatabase
-import com.nicomahnic.dadm.clase4.domain.DeviceDao
-import com.nicomahnic.dadm.clase4.entities.DeviceEntity
+import com.nicomahnic.dadm.clase5.database.appDatabase
+import com.nicomahnic.dadm.clase5.domain.DeviceDao
+import com.nicomahnic.dadm.clase5.entities.DeviceEntity
 import com.nicomahnic.dadm.clase5.R
 import com.nicomahnic.dadm.clase5.activities.SecondActivity
 import com.nicomahnic.dadm.clase5.adapter.DevicesAdapter
 import com.nicomahnic.dadm.clase5.databinding.FragmentRvDevicesBinding
-import com.nicomahnic.dadm.clase5.entities.Device
 
 /**
  * A simple [Fragment] subclass.
@@ -53,7 +52,7 @@ class RVDevicesFragment : Fragment(R.layout.fragment_rv_devices) {
         db = appDatabase.getAppDataBase(v.context)
         deviceDao = db?.deviceDao()
 
-        val devices = deviceDao?.loadAllDevices() as List<DeviceEntity>
+        val devices = deviceDao?.loadAllDevices()!! as List<DeviceEntity>
 
         binding.rvDevices.setHasFixedSize(true)
         linearLayoutManager = LinearLayoutManager(context)
@@ -62,10 +61,11 @@ class RVDevicesFragment : Fragment(R.layout.fragment_rv_devices) {
         devicesAdapter = DevicesAdapter(devices) { pos ->
             Log.d("NM", pos.toString())
             val action =
-                    RVDevicesFragmentDirections.actionRvDevicesFragmentToContainterDetailsFragment(
+                    RVDevicesFragmentDirections
+                        .actionRvDevicesFragmentToContainterDetailsFragment(
                             deviceName = devices[pos].name,
                             description = devices[pos].description
-                    )
+                        )
 
             v.findNavController().navigate(action)
         }

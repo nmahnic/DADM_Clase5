@@ -6,9 +6,9 @@ import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.navigation.findNavController
-import com.nicomahnic.dadm.clase4.database.appDatabase
-import com.nicomahnic.dadm.clase4.domain.DeviceDao
-import com.nicomahnic.dadm.clase4.entities.DeviceEntity
+import com.nicomahnic.dadm.clase5.database.appDatabase
+import com.nicomahnic.dadm.clase5.domain.DeviceDao
+import com.nicomahnic.dadm.clase5.entities.DeviceEntity
 import com.nicomahnic.dadm.clase5.R
 import com.nicomahnic.dadm.clase5.databinding.FragmentRegisterDevicesBinding
 

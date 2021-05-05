@@ -1,13 +1,12 @@
-package com.nicomahnic.dadm.clase4.entities
+package com.nicomahnic.dadm.clase5.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.Index
 import androidx.room.PrimaryKey
 
 
-@Entity(tableName = "users")
-data class UserEntity(
+@Entity(tableName = "devices")
+data class DeviceEntity(
 
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0,
@@ -16,5 +15,5 @@ data class UserEntity(
     val name: String,
 
     @ColumnInfo(name = "device_description")
-    val password: String
+    val description: String
 )

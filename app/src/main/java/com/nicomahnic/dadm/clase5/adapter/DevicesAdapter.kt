@@ -3,12 +3,10 @@ package com.nicomahnic.dadm.clase5.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.nicomahnic.dadm.clase4.entities.DeviceEntity
+import com.nicomahnic.dadm.clase5.entities.DeviceEntity
 import com.nicomahnic.dadm.clase5.R
-import com.nicomahnic.dadm.clase5.entities.Device
 
 class DevicesAdapter(
     private var devicesList: List<DeviceEntity>,

@@ -1,13 +1,13 @@
-package com.nicomahnic.dadm.clase4.database
+package com.nicomahnic.dadm.clase5.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.nicomahnic.dadm.clase4.domain.DeviceDao
-import com.nicomahnic.dadm.clase4.domain.UserDao
-import com.nicomahnic.dadm.clase4.entities.DeviceEntity
-import com.nicomahnic.dadm.clase4.entities.UserEntity
+import com.nicomahnic.dadm.clase5.domain.DeviceDao
+import com.nicomahnic.dadm.clase5.domain.UserDao
+import com.nicomahnic.dadm.clase5.entities.DeviceEntity
+import com.nicomahnic.dadm.clase5.entities.UserEntity
 
 @Database(entities = [UserEntity::class, DeviceEntity::class], version = 1, exportSchema = false)
 
